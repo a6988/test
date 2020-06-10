@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>gitForNoviceLimited</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="C:\Users\a6988\.vim\css\nk.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC">
+<ul>
+<li><a>この記事で学べること</a></li>
+<li><a>はじめに</a></li>
+<li><a>gitとは</a></li>
+<li><a>Gitのインストール方法</a><ul>
+<li><a>ダウンロード</a></li>
+<li><a>ライセンスの表示</a></li>
+<li><a>インストール時の様々な設定</a></li>
+<li><a>gitで標準的に使用するエディターの選択</a></li>
+<li><a>パスの設定</a></li>
+<li><a>SSH認証</a></li>
+<li><a>改行コードの変換設定</a></li>
+<li><a>git Bashで使うターミナルの設定</a></li>
+<li><a>その他</a></li>
+<li><a>終了画面</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1>この記事で学べること</h1>
+<ul>
+<li>ソースコード管理ツールである<code>Git</code>をインストールし、社内gitサーバで公開されているソースコードをダウンロードする</li>
+</ul>
+<h1>はじめに</h1>
+<p><code>git</code>をご存知でしょうか？<code>git</code>とは「ソースコード管理フレームワーク」です。 後でもう少し詳しく解説しますが、要は<strong>「改良を繰り返しながら更新されるプログラムのソースコードを、開発者にとっても使用者にとっても便利に管理しよう」</strong>ということを実現する仕組みです。</p>
+<p>近年ではプログラムのオープンソース化が大きな潮流ですが、<code>git</code>はこの流れを支える基盤技術の一つと言えるでしょう。<code>git</code>を使用することでプログラムの開発に多大な効率化が得られるだけでなく、そのプログラムの共有システムとしても素晴しい機能を果たすため開発者・使用者双方へ恩恵があります。<br />
+例えば社内でのプログラムの開発と共有を<code>git</code>で行うことにより、社内全体の業務効率化・生産性向上に寄与することができます。ご存知のように様々なオープンソースのプログラムが<code>Github</code>のようなレポジトリサイトに投稿されており、これらのプログラムを使用したことがある方は多くいらっしゃると思います。</p>
+<p>これだけ<code>git</code>が重宝されているのは、以下のような理由ではないかと考えています。</p>
+<ul>
+<li>ソースコードは修正されるものなので、無数のバージョンが作成されることになってしまう。<br />
+この無数のバージョンを適切に管理するのは厄介だが、この問題に対して<code>git</code>は合理的な手法を提供してくれる。例えば、バージョンの異なるファイルでHDDの中を散らかさずに、やっぱり前の状態に戻したい時には1つのコマンドで一瞬で戻ることができる。</li>
+<li><code>github</code>や<code>gitlab</code>のようなシステムが充実している。<br />
+このシステムを用いると、開発者にとってはバージョン管理に手間をかけず最新版を含めたこれまでのバージョンのアップロードできるし、使用者にとっても簡単にダウンロードできる仕組みが提供され、双方にとって便利。</li>
+<li>他のユーザからのフィードバックを受けやすい。他ユーザがソースコードの修正を行い、それを提案する仕組みが提供されている。</li>
+</ul>
+<p>ということで、<code>git</code>を使えるようになるといい事ばかりですので、是非使えるようになりましょう。<br />
+とは言えいきなりプログラム開発に<code>git</code>を使うのは難しいですので、本記事では<code>git</code>をダウンロードするためだけに使えるよう、インストールと基本的な使い方に絞って解説することにします。</p>
+<h1>gitとは</h1>
+<p><code>git</code>は、「バージョン管理システム」の一つです。バージョン管理システムとは、プログラムのソースコードなどの変更履歴を記録・追跡するためのシステムのことです。</p>
+<p>他のバージョン管理システムとして、<code>subversion</code>などが挙げられます。<code>subversion</code>は集中型、<code>git</code>は分散型と呼ばれており違いがあるのですが、現時点で意識せずともいいでしょう。(もし詳しく知りたければ<a href="http://success.tracpath.com/blog/2014/09/08/subversionとgitの違い/">こちら</a>を参照。)</p>
+<p>バージョン管理システムは、変更履歴や現在の最新版などファイルの各バージョンをデータベースに保存します。このデータベースはレポジトリと呼ばれ、最終版だけでなくこれまで幾度となく変更されてきた前バージョンのファイルも、レポジトリ内に保存しているので昔に戻ることができるのです。</p>
+<p>昔のバージョンのファイルに戻りたくなったことは誰しもあることでしょう。ワードやエクセルのファイルで、「変更してめちゃくちゃになったら困るから名前を変えて保存しておこう」など、まさに新しいバージョンを作成する行為です。</p>
+<p>この方法は極めて単純で、旧バージョンを保存したいという目的は直接的に実現できますが、同時に様々なデメリットが存在します。</p>
+<ul>
+<li>複数バージョンができた時どれが新しいのか、どこを変更しているのかなどが分からなくなる</li>
+<li>違うファイル名が沢山できるので、別のところから参照していた場合にはそちらのファイル名も同時に直さなくてはならない</li>
+<li>複数ファイルができて容量を圧迫する上、フォルダ内が散らかる</li>
+</ul>
+<p>これらを解決できるのが<code>git</code>です。これらのメリットは「ダウンロードして使うだけ」のユーザにはあまり関係ないものばかりですが、開発者側にはかけがえのない恩恵ばかりです。そのため、ソースコードを配布する方法として、<code>git</code>をベースとしたサーバであることが増えているのです。</p>
+<p>今はダウンロードだけできればいいので、「<code>git</code>を使うとなんか効率的な開発ができるらしい」、くらいの認識でもいいと思います。</p>
+<h1>Gitのインストール方法</h1>
+<h2>ダウンロード</h2>
+<p style="text-align:center;">
+    <img src="./png/gitDownload.png" width="60%"/>
+</p>
+<ol>
+<li><p><a href="https://git-scm.com">こちら</a>の「Downloadging Git」を押すとダウンロードが始まるので、終了したらダウンロードしたファイルを実行して下さい。</p>
+<ul>
+<li>現時点でのダウンロードファイル名は<code>Git-2.25.0-64-bit.exe</code>。32bitマシンの場合は32bit用のファイルをダウンロードしましょう。</li>
+</ul></li>
+</ol>
+<h2>ライセンスの表示</h2>
+<p style="text-align:center;">
+    <img src="./png/gitInstall_01.png" width="60%"/>
+</p>
+<ol>
+<li>ダウンロードしたファイルを実行すると以下の画面が出てきます。ライセンスが表示されます。<code>Next</code>を押して次に進みましょう。</li>
+</ol>
+<h2>インストール時の様々な設定</h2>
+<p style="text-align:center;">
+    <img src="./png/gitInstall_02.png" width="60%"/>
+</p>
+<ol>
+<li><p>インストールする時の設定を選択します。<code>Use a TrueType font in all console windows</code>はチェックを外すようにしましょう。</p>
+<ul>
+<li><p>Additional Icons</p>
+<ul>
+<li>デスクトップにgitのアイコンを配置します。</li>
+</ul></li>
+<li><p>Windows Explorer integration</p>
+<ul>
+<li><p>エクスプローラで右クリックした時、<code>Git Bash Here</code>と<code>Git GUI Here</code>を呼び出せるようにするか。この機能は便利なのでチェックしておきましょう。</p>
+<ul>
+<li>Git Bash Hereは、Git版コマンドプロンプトであるbashをエクスプローラで開いているフォルダから実行できるようにする</li>
+<li>Git GUI Hereは、Gitコマンドをグラフィカルな画面で管理することのできるソフトを起動できるようにする</li>
+</ul></li>
+</ul></li>
+<li><p>GitLFS(large file Support)</p>
+<ul>
+<li>バイナリファイルなどの大きなファイルを管理するのに適したファイル管理システムで、githubが中心となって開発しているgitへの追加機能。チェックしておいてよいでしょう。</li>
+</ul></li>
+<li><p>Associate <code>.git*</code> configuration files with the default text editor</p>
+<ul>
+<li>gitの設定ファイルである<code>.gitなんとか</code>(例えば<code>.gitignore</code>や<code>.gitconfig</code>など)をデフォルトのエディターに関連付けするか。お好みで。</li>
+</ul></li>
+<li><p>Associate .sh files to be run with Bash</p>
+<ul>
+<li>拡張子がshのファイルをbashで起動するようにするか。お好みで。</li>
+</ul></li>
+<li><p>Use a TrueType font in all console windows</p>
+<ul>
+<li>これをチェックしているとフォントがLucida Consoleに変更されてしまうので、チェックしないようにしましょう。</li>
+</ul></li>
+<li><p>Check daily for Git for Windows updates</p>
+<ul>
+<li>毎日アップデートの確認を行うか、ですが、普通の人はそんな必要はないと思うのでチェックを外しておきましょう。</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2>gitで標準的に使用するエディターの選択</h2>
+<p style="text-align:center;">
+    <img src="./png/gitInstall_03.png" width="60%"/>
+</p>
+<p>ここではgitから呼び出されるデフォルトエディターを選択します。各種エディターが選択できますが、初期状態で選択されている<code>Use Vim</code>は<strong>やめておきましょう</strong>。</p>
+<p><code>vim</code>はlinuxでよく使用されている高機能エディターで、実は私も日常的に愛用しているのですが、いかんせん癖が強すぎてとてもじゃないがおすすめできないです。</p>
+<p>一番普通のエディターに近いのは<code>nano</code>だと思いますので、こちらを選択しましょう。</p>
+<p>メモ帳やサクラエディターを使いたい方は、インストール後に下記のコマンドを実行することで変更できます。インストール後に以下のコマンドをGit bashから入力することでエディターの変更が可能です。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># サクラエディターへ変更</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="op">&gt;</span> <span class="fu">git</span> config --global core.editor <span class="st">&quot;&#39;C:/Program Files (x86)/sakura/sakura.exe&#39; -CODE=4&quot;</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"># メモ帳へ変更</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="op">&gt;</span> <span class="fu">git</span> config --global core.editor <span class="st">&quot;&#39;notepad.exe&#39;&quot;</span></a></code></pre></div>
+<p>余談ですが、<code>select other editor as Git's default editor</code>を選択すれば任意のエディターが選べそうな雰囲気なのですが、私の環境ではハングしてしまい上手くいきませんでした。</p>
+<h2>パスの設定</h2>
+<p style="text-align:center;">
+    <img src="./png/gitInstall_04.png" width="60%"/>
+</p>
+<p>PATHの設定です。<strong>RECOMMEND</strong>となっているデフォルトの設定でよいでしょう。インストールするものにはgit本体のコマンドの他にunixで使われている様々な便利なコマンドもインストールされるのですが、それをコマンドプロンプトなどでも使えるようにするか、という設定です。</p>
+<p>パスを通すとディレクトリ名を指定しなくてもコマンド名だけで使用できるようになります。よく使うコマンドについては便利ですが、別フォルダに同名のコマンドがある場合に問題が生じます。つまり、同名のファイルのどちらが使われるのか、という問題です。gitをインストールすることで作成されるファイルにwindowsと同名のファイルがあるため、パスを通すかどうかということを訊ねてきているわけです。</p>
+<ul>
+<li><p>一番上は、Gitのコマンドプロンプトに相当する<code>Git bash</code>からしかこれからインストールするコマンドを使えないパス設定です。これは、gitコマンド本体も他のwindowsアプリケーションから使えないパス設定である、ということです。</p></li>
+<li><p>二番目は、gitにとって最低限のコマンドのパスは通して他のアプリケーションからでも使えるようにして、付随的なunixコマンドのパスは通さない、という設定です。</p></li>
+<li><p>三番目は、インストールする全てのコマンドのパスを通す選択です。これによってwindowsで使用されている同名のコマンド(find.exeやsort.exeなど)は使用できなくなり、gitでインストールされているファイルの方が使用されるようになります。</p></li>
+</ul>
+<h2>SSH認証</h2>
+<p style="text-align:center;">
+    <img src="./png/gitInstall_05.png" width="60%"/>
+</p>
+<p>SSH認証に使用するライブラリの選択ですが、デフォルトでいいでしょう。</p>
+<h2>改行コードの変換設定</h2>
+<p style="text-align:center;">
+    <img src="./png/gitInstall_06.png" width="60%"/>
+</p>
+<p>改行コードの変換をどうするか、という設定です。今回はまずはgitでダウンロードしたい、という人向けですので<strong>1番目の選択</strong>をお勧めします。<br />
+改行コードとは文字通り、改行を示すための記号なのですが、これがWindows,Mac(MacOSver9まで),Unixで異なっています。<br />
+そのため、gitで管理されているコードがもし、Linuxで書かれていたとして、それをwindows使用者がダウンロードした場合には、改行コードが違うせいで上手く改行されない、という事態が生じてしまいます。<br />
+このようなことがないように、1番目の選択肢では、Windowsで使用する時には自動でwindows用の改行コードに変換します。</p>
+<p>詳細は<a href="https://futureys.tokyo/what-is-autocrlf-of-git/">こちら</a>をご覧下さい。LinuxやMacを使用する人は二番目の選択肢などがいいと思います。</p>
+<h2>git Bashで使うターミナルの設定</h2>
+<p style="text-align:center;">
+    <img src="./png/gitInstall_07.png" width="60%"/>
+</p>
+<p>Git Bashを使用するターミナル(コマンドを入力する黒い画面のこと)の設定です。そのターミナルをMinTTYというものを使うか、windows標準のコマンドプロンプトを使用するか、という設定です。コマンドプロンプトよりもMinTTYの方が使い勝手がよいので、MinTTYを使う選択肢をお勧めします。</p>
+<h2>その他</h2>
+<p style="text-align:center;">
+    <img src="./png/gitInstall_08.png" width="60%"/>
+</p>
+<p>様々なオプションについてです。デフォルトのままでよいでしょう。Installをクリックして終了まで暫くお待ち下さい。</p>
+<h2>終了画面</h2>
+<p style="text-align:center;">
+    <img src="./png/gitInstall_09.png" width="60%"/>
+</p>
+<p>無事終了すると以下の画面が表示されます。「Next」を押してインストールは終了です。</p>
+</body>
+</html>
